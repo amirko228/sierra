@@ -1,6 +1,6 @@
 # Sierra Karakol — веб-платформа
 
-Монорепозиторий: **Next.js (App Router)** + **NestJS** + **PostgreSQL**.
+Монорепозиторий: **Next.js (App Router)** в корне + **NestJS** в **`backend/`** + **PostgreSQL**.
 
 ## Быстрый старт
 
@@ -47,10 +47,9 @@ npm run start:dev
 
 API: `http://localhost:4000/api`, health: `GET /api/health`.
 
-### 3. Frontend
+### 3. Frontend (Next.js в корне репозитория)
 
 ```bash
-cd frontend
 cp .env.example .env.local
 npm install
 npm run dev
@@ -58,26 +57,24 @@ npm run dev
 
 Сайт: `http://localhost:3000`. Укажите `NEXT_PUBLIC_API_URL=http://localhost:4000/api`.
 
-**Скрытая админка:** в `frontend/.env.local` можно задать `ADMIN_PANEL_SLUG=ваш-секрет` — ссылка «Админ» в шапке отсутствует, прямой `/admin` вернёт 404. Открывайте `http://localhost:3000/ваш-секрет` (тот же UI, что `/admin`). Если переменная пустая — админка доступна по `/admin` (всё равно без пункта в меню).
+**Скрытая админка:** в **`.env.local` в корне** можно задать `ADMIN_PANEL_SLUG=ваш-секрет` — ссылка «Админ» в шапке отсутствует, прямой `/admin` вернёт 404. Открывайте `http://localhost:3000/ваш-секрет` (тот же UI, что `/admin`). Если переменная пустая — админка доступна по `/admin` (всё равно без пункта в меню).
 
 Меню на сайте подгружается с API (`GET /api/menu`); правки в админке → вкладка «Меню».
 
 **Если в dev 500, `Cannot find module './NNN.js'`, `SegmentViewNode`, `0.pack.gz ENOENT`:**
 
-1. Запускайте **`npm run dev`** или **`npm run dev:fresh`** из папки `frontend` (не голый `next dev` — нужен **Turbopack** по умолчанию).
+1. Запускайте **`npm run dev`** или **`npm run dev:fresh`** из **корня** репозитория (не голый `next dev` — нужен **Turbopack** по умолчанию).
 2. **`npm run clean`** и снова **`npm run dev`**.
 3. Проект в **OneDrive/Desktop** часто ломает кэш `.next`; по возможности перенесите репозиторий в обычную папку (например `C:\dev\sierra`) или исключите папку `.next` из синхронизации.
 4. Режим только Webpack: **`npm run dev:webpack`** — в `next.config` для dev отключён persistent webpack cache, чтобы реже ловить битые чанки.
 
 ### Деплой фронта на Vercel
 
-Репозиторий — монорепо: Next.js лежит в **`frontend/`**. В **`vercel.json` нельзя** указывать `rootDirectory` — схема Vercel это отклоняет; путь задаётся **только** в проекте.
+Next.js и **`package.json`** в **корне** репозитория, API — в **`backend/`**. Сборка на Vercel как у обычного Next: **Root Directory** должен быть **корнем репозитория**. Если раньше было **`frontend`** — уберите это в **Settings → General → Root Directory** (очистить / `.`), иначе сборка сломается.
 
-1. **Обязательно:** Vercel → ваш проект → **Settings → General → Root Directory** → **`frontend`** → **Save**, затем **Deployments → … → Redeploy**. Иначе сборка идёт из корня репозитория и вы получите **404** или ошибки.
-2. **Settings → Environment Variables** (Production):
-   - `NEXT_PUBLIC_API_URL` — URL вашего API, например `https://ваш-api.onrender.com/api` (со `/api` в конце).
-   - `NEXT_PUBLIC_SITE_URL` — `https://ваш-проект.vercel.app` (или ваш домен).
-3. **Framework Preset** после смены Root Directory обычно **Next.js**; при необходимости выберите вручную.
+1. **Settings → Environment Variables** (Production): `NEXT_PUBLIC_API_URL` (URL API со `/api`), `NEXT_PUBLIC_SITE_URL` (URL сайта на Vercel или домен).
+2. В корне есть **`.vercelignore`** с папкой `backend`, чтобы не загружать бэкенд в деплой фронта.
+3. Старую папку **`frontend/`** на диске можно удалить, если осталась после переноса.
 
 ### Интеграции
 
