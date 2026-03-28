@@ -71,15 +71,13 @@ npm run dev
 
 ### Деплой фронта на Vercel
 
-Репозиторий — монорепо: Next.js в **`frontend/`**. В корне лежит **`vercel.json`** с `"rootDirectory": "frontend"`.
+Репозиторий — монорепо: Next.js лежит в **`frontend/`**. В **`vercel.json` нельзя** указывать `rootDirectory` — схема Vercel это отклоняет; путь задаётся **только** в проекте.
 
-Если после пуша снова **404**:
-
-1. Vercel → проект **sierra** → **Settings → General → Root Directory** → должно быть **`frontend`** (сохранить и **Redeploy**).
+1. **Обязательно:** Vercel → ваш проект → **Settings → General → Root Directory** → **`frontend`** → **Save**, затем **Deployments → … → Redeploy**. Иначе сборка идёт из корня репозитория и вы получите **404** или ошибки.
 2. **Settings → Environment Variables** (Production):
-   - `NEXT_PUBLIC_API_URL` — URL вашего API, например `https://ваш-api.onrender.com/api` (обязательно со `/api` в конце).
-   - `NEXT_PUBLIC_SITE_URL` — `https://sierra-theta.vercel.app` (или ваш домен).
-3. Подключите репозиторий так, чтобы Vercel брал **этот** монорепо; **Framework Preset** обычно подхватывается как **Next.js** автоматически.
+   - `NEXT_PUBLIC_API_URL` — URL вашего API, например `https://ваш-api.onrender.com/api` (со `/api` в конце).
+   - `NEXT_PUBLIC_SITE_URL` — `https://ваш-проект.vercel.app` (или ваш домен).
+3. **Framework Preset** после смены Root Directory обычно **Next.js**; при необходимости выберите вручную.
 
 ### Интеграции
 
