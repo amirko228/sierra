@@ -1,0 +1,81 @@
+/** Начальное меню при пустой БД (копия прежнего статического контента). */
+export const DEFAULT_MENU_CATEGORIES = [
+  {
+    slug: 'coffee',
+    title: 'Кофе и напитки',
+    sortOrder: 0,
+    items: [
+      {
+        id: 'espresso',
+        name: 'Эспрессо',
+        description: 'Классика, обжарка под горы Тянь-Шаня.',
+        price: '150 с',
+        tags: [] as string[],
+        sortOrder: 0,
+      },
+      {
+        id: 'cap',
+        name: 'Капучино',
+        description: 'Молоко и двойной шот, бархатная пенка.',
+        price: '220 с',
+        tags: [],
+        sortOrder: 1,
+      },
+      {
+        id: 'filter',
+        name: 'Фильтр-кофе',
+        description: 'Сезонный сингл-ориджин, V60.',
+        price: '200 с',
+        tags: [],
+        sortOrder: 2,
+      },
+      {
+        id: 'tea',
+        name: 'Горный чай',
+        description: 'Травяной сбор, мёд по желанию.',
+        price: '120 с',
+        tags: [],
+        sortOrder: 3,
+      },
+    ],
+  },
+  {
+    slug: 'food',
+    title: 'Еда',
+    sortOrder: 1,
+    items: [
+      {
+        id: 'morning',
+        name: 'Завтрак Sierra',
+        description: 'Яйца, сыр, овощи, домашний хлеб.',
+        price: '480 с',
+        tags: ['популярное'],
+        sortOrder: 0,
+      },
+      {
+        id: 'soup',
+        name: 'Суп дня',
+        description: 'Спросите бариста — меняется ежедневно.',
+        price: '320 с',
+        tags: [],
+        sortOrder: 1,
+      },
+      {
+        id: 'sandwich',
+        name: 'Сэндвич с индейкой',
+        description: 'Соус цитрус-горчица, салат, томат.',
+        price: '360 с',
+        tags: [],
+        sortOrder: 2,
+      },
+      {
+        id: 'dessert',
+        name: 'Десерт от кондитера',
+        description: 'Брауни или чизкейк — по наличию.',
+        price: '280 с',
+        tags: [],
+        sortOrder: 3,
+      },
+    ],
+  },
+] as const;

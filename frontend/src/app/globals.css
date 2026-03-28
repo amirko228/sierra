@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --sierra-gradient-hero: linear-gradient(
+    155deg,
+    #fdfcfa 0%,
+    #f6f1ea 38%,
+    #e8efe9 72%,
+    #dce8e2 100%
+  );
+  --sierra-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-sierra-oat text-sierra-ink antialiased;
+  background-image: var(--sierra-noise);
+  background-attachment: fixed;
+}
+
+::selection {
+  @apply bg-sierra-sage/30 text-sierra-deep;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .sierra-hero-gradient {
+    background: var(--sierra-gradient-hero);
+  }
+  .sierra-card-frosted {
+    @apply rounded-3xl border border-sierra-latte/70 bg-sierra-snow/70 shadow-soft backdrop-blur-md;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
