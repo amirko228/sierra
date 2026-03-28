@@ -69,6 +69,18 @@ npm run dev
 3. Проект в **OneDrive/Desktop** часто ломает кэш `.next`; по возможности перенесите репозиторий в обычную папку (например `C:\dev\sierra`) или исключите папку `.next` из синхронизации.
 4. Режим только Webpack: **`npm run dev:webpack`** — в `next.config` для dev отключён persistent webpack cache, чтобы реже ловить битые чанки.
 
+### Деплой фронта на Vercel
+
+Репозиторий — монорепо: Next.js в **`frontend/`**. В корне лежит **`vercel.json`** с `"rootDirectory": "frontend"`.
+
+Если после пуша снова **404**:
+
+1. Vercel → проект **sierra** → **Settings → General → Root Directory** → должно быть **`frontend`** (сохранить и **Redeploy**).
+2. **Settings → Environment Variables** (Production):
+   - `NEXT_PUBLIC_API_URL` — URL вашего API, например `https://ваш-api.onrender.com/api` (обязательно со `/api` в конце).
+   - `NEXT_PUBLIC_SITE_URL` — `https://sierra-theta.vercel.app` (или ваш домен).
+3. Подключите репозиторий так, чтобы Vercel брал **этот** монорепо; **Framework Preset** обычно подхватывается как **Next.js** автоматически.
+
 ### Интеграции
 
 - **Telegram:** бронь отеля, коворкинг и лиды уходят в один чат — `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` в `backend/.env`
