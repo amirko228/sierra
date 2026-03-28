@@ -70,7 +70,7 @@ npm run dev
 
 ### Деплой фронта на Vercel
 
-Next.js и **`package.json`** в **корне** репозитория, API — в **`backend/`**. Сборка на Vercel как у обычного Next: **Root Directory** должен быть **корнем репозитория**. Если раньше было **`frontend`** — уберите это в **Settings → General → Root Directory** (очистить / `.`), иначе сборка сломается.
+Next.js и **`package.json`** в **корне** репозитория, API — в **`backend/`**. Сборка на Vercel как у обычного Next: **Root Directory** — корень репозитория. Если раньше было **`frontend`** — уберите. В **Build & Deployment**: **Framework Preset — Next.js**, поле **Output Directory** должно быть **пустым** (если там вручную стояло `public` — очистите, иначе будет ошибка про output после сборки).
 
 1. **Settings → Environment Variables** (Production): `NEXT_PUBLIC_API_URL` (URL API со `/api`), `NEXT_PUBLIC_SITE_URL` (URL сайта на Vercel или домен).
 2. В корне есть **`.vercelignore`** с папкой `backend`, чтобы не загружать бэкенд в деплой фронта.
