@@ -55,10 +55,7 @@ export default function ContactPage() {
             </a>
           </p>
           <p className="mt-6 text-sm text-sierra-snow/78">
-            Заявки с формы дублируются в Telegram команде. Подключение бота — в настройках API:{' '}
-            <span className="text-sierra-snow/88">TELEGRAM_BOT_TOKEN</span> и{' '}
-            <span className="text-sierra-snow/88">TELEGRAM_CHAT_ID</span> в файле{' '}
-            <span className="text-sierra-snow/88">backend/.env</span>.
+            Сообщение из формы сразу попадает к нам — обычно отвечаем в тот же день.
           </p>
         </div>
       </div>
