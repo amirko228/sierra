@@ -22,14 +22,43 @@ export default function ContactPage() {
         <div className="rounded-3xl bg-gradient-to-br from-sierra-forest via-sierra-moss to-sierra-deep p-8 text-sierra-snow shadow-lift">
           <h2 className="font-display text-lg font-medium">На месте</h2>
           <p className="mt-3 text-sm text-sierra-snow/82">
-            Каракол, Kyrgyzstan
-            <br />
-            Замените этот блок на реальный адрес, часы работы и ссылки на 2GIS /
-            Google Maps.
+            <span className="block font-medium text-sierra-snow">Sierra Coffee · Madanur</span>
+            <span className="mt-2 block">
+              98, автодорога А363, Каракол (Пржевальск), Иссык-Кульская область, Кыргызстан
+            </span>
+            <span className="mt-2 block">Ежедневно 7:30–23:00</span>
+          </p>
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <a
+              className="font-medium text-sierra-cream underline decoration-sierra-cream/50 underline-offset-2 hover:decoration-sierra-cream"
+              href="https://www.google.com/maps/search/Sierra+Coffee+Karakol"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Maps
+            </a>
+            <a
+              className="font-medium text-sierra-cream underline decoration-sierra-cream/50 underline-offset-2 hover:decoration-sierra-cream"
+              href="https://2gis.kg/search/Sierra%20Karakol"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2GIS
+            </a>
+            <a
+              className="font-medium text-sierra-cream underline decoration-sierra-cream/50 underline-offset-2 hover:decoration-sierra-cream"
+              href="https://sierra.madanur.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sierra.madanur.com
+            </a>
           </p>
           <p className="mt-6 text-sm text-sierra-snow/78">
-            Интеграции Telegram и WhatsApp настраиваются через переменные окружения
-            API — см. README в корне проекта.
+            Заявки с формы дублируются в Telegram команде. Подключение бота — в настройках API:{' '}
+            <span className="text-sierra-snow/88">TELEGRAM_BOT_TOKEN</span> и{' '}
+            <span className="text-sierra-snow/88">TELEGRAM_CHAT_ID</span> в файле{' '}
+            <span className="text-sierra-snow/88">backend/.env</span>.
           </p>
         </div>
       </div>
